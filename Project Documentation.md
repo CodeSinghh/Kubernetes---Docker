@@ -255,6 +255,6 @@ By following these steps, you'll be able to build your infrastructure using Terr
    - After a few minutes, once the EKS cluster and associated resources are destroyed, go to the EC2 Dashboard.
    - Terminate the EC2 instance created earlier.
 
-By following these steps, you'll be able to create and destroy the necessary resources for deploying your application on Amazon EKS efficiently. Ensure to terminate all resources to avoid incurring unnecessary charges on your AWS account.
+By following these steps, you'll be able to create and destroy the necessary resources for deploying your webiste on Amazon EKS efficiently. Ensure to terminate all resources to avoid incurring unnecessary charges on your AWS account.
 
 
