@@ -208,7 +208,7 @@ By following these steps, you'll be able to build your infrastructure using Terr
 2. **Create Deployment**:
    - Apply the deployment configuration defined in `deployment.yaml` file:
      ```
-     kubectl apply -f deployment.yaml
+     kubectl apply -f deploy.yaml
      ```
 
 3. **Create Service**:
@@ -226,18 +226,18 @@ By following these steps, you'll be able to build your infrastructure using Terr
 5. **Get Load Balancer Ingress**:
    - Retrieve the Load Balancer Ingress details for accessing the application:
      ```
-     kubectl describe service Application
+     kubectl describe service webapp-service
      ```
 
 6. **Play and Enjoy**:
-   - Copy the Load Balancer Ingress URL and paste it into a web browser to access and enjoy the game.
+   - Copy the Load Balancer Ingress URL and paste it into a web browser to access website.
 
 ### Step 7: Destroy All Infrastructure
 
 1. **Delete Deployment and Service**:
    - Delete the deployment and service to stop the application:
      ```
-     kubectl delete service Application
+     kubectl delete service webapp-service
      kubectl delete deployment webapp-deployment
      ```
 
