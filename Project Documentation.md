@@ -105,6 +105,23 @@ Here's the step-by-step guide to set up Docker, Terraform, AWS CLI, and kubectl 
 
 By following these steps, you'll have Docker, Terraform, AWS CLI, and kubectl set up on your system, ready to use for your development and deployment needs.
 
+### Step 3: IAM Role for EC2
+
+#### Why we need IAM Role for EC2?
+IAM Role for EC2 is essential as it allows your EC2 instances to perform actions on your behalf within AWS services. In this specific scenario, the IAM Role will be utilized by your EC2 instance to create an EKS cluster and manage S3 buckets. By applying this IAM Role, it grants the necessary permissions and authenticity to your EC2 instance to make changes within your AWS account.
+
+#### Steps to Create IAM Role for EC2:
+
+   - Open the AWS Management Console and navigate to the IAM service.
+   - Click on "Roles" on the left-hand side menu.
+   - Click on "Create role" and choose "EC2" from the dropdown options.
+   - Click on "Next" to proceed.
+   - In the permission section, choose "AdministratorAccess" to grant full administrative permissions to the role.
+   - Click on "Next" and provide a name for your IAM role.
+   - Finally, click on "Create role" to complete the process.
+
+Your IAM Role for EC2 is now successfully created and ready to be associated with EC2 instances.
+
 ### Step 4: Attach IAM Role to Your EC2 Instance
 
 1. **Go to EC2 Section**:
@@ -121,25 +138,6 @@ By following these steps, you'll have Docker, Terraform, AWS CLI, and kubectl se
 4. **Update IAM Role**:
    - After selecting the IAM role, click on the "Update IAM role" button to attach the role to the EC2 instance.
 
-### Why We Need IAM Role
-
-IAM (Identity and Access Management) roles are crucial in managing access to AWS resources securely. Here's why we need IAM roles:
-
-1. **Granular Access Control**:
-   - IAM roles allow you to define fine-grained permissions for accessing AWS resources. You can specify what actions a user, service, or resource can perform on AWS services.
-
-2. **Least Privilege Principle**:
-   - IAM roles adhere to the principle of least privilege, which means granting only the permissions necessary to perform specific tasks. This minimizes the risk of unauthorized access or misuse of resources.
-
-3. **Temporary Credentials**:
-   - IAM roles can provide temporary security credentials that are automatically rotated and managed by AWS. These credentials are short-lived and reduce the risk of credential compromise.
-
-4. **Seamless Integration**:
-   - IAM roles seamlessly integrate with various AWS services, allowing EC2 instances, Lambda functions, and other resources to access AWS services securely without the need for long-term access keys.
-
-5. **Secure Access to AWS Services**:
-   - By attaching an IAM role to an EC2 instance, you ensure that the instance has the necessary permissions to access other AWS services securely, such as S3, DynamoDB, or RDS, based on the defined policies.
-
 By leveraging IAM roles, you can effectively manage access to your AWS resources while maintaining security and compliance standards within your organization.
 
 ### Step 5: Building Infrastructure Using Terraform
@@ -152,8 +150,8 @@ By leveraging IAM roles, you can effectively manage access to your AWS resources
      ```
    - Clone the GitHub repository:
      ```
-     git clone https://github.com/Aakibgithuber/Deployment-of-super-Mario-on-Kubernetes-using-terraform.git
-     cd Deployment-of-super-Mario-on-Kubernetes-using-terraform/EKS-TF
+     git clone https://github.com/CodeSinghh/Kubernetes---Docker.git
+     cd Kubernetes---Docker/K8-Tf
      ```
 
 2. **Edit Backend Configuration**:
@@ -194,9 +192,8 @@ By leveraging IAM roles, you can effectively manage access to your AWS resources
 8. **Update EKS Configuration**:
    - Update the configuration of the Amazon EKS cluster to configure `kubectl` to connect to it:
      ```
-     aws eks update-kubeconfig --name EKS_CLOUD --region us-east-1
+     aws eks update-kubeconfig --name EKS_CLOUD --region ap-south-1
      ```
-   - Replace `EKS_CLOUD` with the name of your EKS cluster and `us-east-1` with the appropriate AWS region where your cluster is deployed.
 
 By following these steps, you'll be able to build your infrastructure using Terraform and configure it for deployment on Amazon EKS. Ensure that you provide the necessary configurations and permissions as mentioned in the notes to enable smooth execution of Terraform commands.
 
@@ -229,7 +226,7 @@ By following these steps, you'll be able to build your infrastructure using Terr
 5. **Get Load Balancer Ingress**:
    - Retrieve the Load Balancer Ingress details for accessing the application:
      ```
-     kubectl describe service mario-service
+     kubectl describe service Application
      ```
 
 6. **Play and Enjoy**:
@@ -240,14 +237,14 @@ By following these steps, you'll be able to build your infrastructure using Terr
 1. **Delete Deployment and Service**:
    - Delete the deployment and service to stop the application:
      ```
-     kubectl delete service mario-service
-     kubectl delete deployment mario-deployment
+     kubectl delete service Application
+     kubectl delete deployment webapp-deployment
      ```
 
 2. **Destroy EKS Cluster**:
    - Navigate to the directory containing the Terraform configuration for EKS:
      ```
-     cd EKS-TF
+     cd K8-Tf
      ```
    - Destroy the infrastructure using Terraform:
      ```
