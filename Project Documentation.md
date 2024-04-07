@@ -224,7 +224,7 @@ By following these steps, you'll be able to build your infrastructure using Terr
      ```
 
 5. **Get Load Balancer Ingress**:
-   - Retrieve the Load Balancer Ingress details for accessing the application:
+   - Retrieve the Load Balancer Ingress details for accessing the website:
      ```
      kubectl describe service webapp-service
      ```
@@ -235,7 +235,7 @@ By following these steps, you'll be able to build your infrastructure using Terr
 ### Step 7: Destroy All Infrastructure
 
 1. **Delete Deployment and Service**:
-   - Delete the deployment and service to stop the application:
+   - Delete the deployment and service to stop the website:
      ```
      kubectl delete service webapp-service
      kubectl delete deployment webapp-deployment
@@ -255,6 +255,6 @@ By following these steps, you'll be able to build your infrastructure using Terr
    - After a few minutes, once the EKS cluster and associated resources are destroyed, go to the EC2 Dashboard.
    - Terminate the EC2 instance created earlier.
 
-By following these steps, you'll be able to create and destroy the necessary resources for deploying your webiste on Amazon EKS efficiently. Ensure to terminate all resources to avoid incurring unnecessary charges on your AWS account.
+By following these steps, you'll be able to create and destroy the necessary resources for deploying your website on Amazon EKS efficiently. Ensure to terminate all resources to avoid incurring unnecessary charges on your AWS account.
 
 
