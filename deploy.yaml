@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: appyaml
+  labels:
+    app: star
 spec:
-  replicas: 2  # You can adjust the number of replicas as needed
+  replicas: 3
   selector:
     matchLabels:
-      app: webapp
+      app: star
   template:
     metadata:
       labels:
-        app: webapp
+        app: star
     spec:
       containers:
-      - name: webapp-container
-        image: sevenajay/webapp:latest # Replace with your own Docker image
+      - name: appyaml
+        image: dhirajsingh6/dhisin:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8000
